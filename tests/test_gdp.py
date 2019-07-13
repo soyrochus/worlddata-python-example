@@ -13,3 +13,8 @@ def test_gdp_get_countries():
     assert 'ABW' == countries[0].CountryCode   # First item in list: Aruba
     assert 'ZWE' == countries[-1].CountryCode # Last item in list: Zimbabwe
 
+def test_gdp_get_gdp():
+    gdp = GdpData(DB_PATH)
+    gdp = gdp.get_gdp()
+    assert 15576 == len(gdp) # total number of countries
+    

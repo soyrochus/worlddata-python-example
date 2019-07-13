@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Numeric
 
 Base = declarative_base()
 
@@ -24,9 +24,17 @@ class GdpData:
     def get_countries(self):
         
         session = self.Session()
-        query = session.query(Country).order_by(Country.CountryCode)
+        query = session.query(Country).order_by(Country.CountryCode.asc())
+        countries = query.all()
         session.close()
-        return query.all()
+        return countries
+
+    def get_gdp(self):
+        session = self.Session()
+        query = session.query(Gdp).order_by(Gdp.CountryCode.asc())
+        gdp = query.all()
+        session.close()
+        return gdp
 
 class Country(Base):
     
@@ -38,6 +46,15 @@ class Country(Base):
     def __repr__(self):
         return "<Country(CountryCode='%s', CountryName='%s')>" % (self.CountryCode, self.CountryName)
 
-class Gdp:
-    pass
+class Gdp(Base):
+    __tablename__ = 'gdp'
 
+    id = Column(Integer, primary_key=True)
+    CountryCode = Column(String)
+    Year = Column(String)
+    gdp = Column(String)
+    growth = Column(String)
+
+    def __repr__(self):
+        return "<Gdp(id='%s',CountryCode='%s', Year='%s', gdp='%s', growth='%s')>" \
+            % (self.id, self.CountryCode, self.Year, self.gdp, self.growth)
