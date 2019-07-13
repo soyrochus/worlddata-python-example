@@ -1,6 +1,6 @@
 # Worlddata Python Example
 
-A Python package demonstrating the usage with large data sets".
+A Python package demonstrating the usage with large data sets.
 
 ## Installation and activation after obtaining a clone from Github
 
@@ -12,12 +12,12 @@ Use the more basic package manager [pip](https://pip.pypa.io/en/stable/) to inst
 pip install pipenv
 ```
 
-Then go into the folder `worlddata-python-example` and execute: 
+Then go into the folder `worlddata-python-example` and execute:
 
 ```bash
-pipenv install'-e .' 
+pipenv install -e .
 ```
-in order to install all dependecies and get a locally registered 'devlopment' copy of the 
+in order to install all dependecies and get a locally registered 'development' copy of the project.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

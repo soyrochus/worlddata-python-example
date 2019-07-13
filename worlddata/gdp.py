@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Numeric
+import csv
 
 Base = declarative_base()
 
@@ -10,6 +11,7 @@ SQLITE_PATH_MASK = 'sqlite:///{}'
 
 def get_sqlite_resource(path):
     return SQLITE_PATH_MASK.format(path)
+
 
 class GdpData:
     def __init__(self, path): 
