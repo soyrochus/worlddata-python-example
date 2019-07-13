@@ -44,6 +44,8 @@ class Country(Base):
 
     CountryCode = Column(String, primary_key=True)
     CountryName = Column(String)
+    CountryCode2 = Column(String)
+    UNCode = Column(String)
     
     def __repr__(self):
         return "<Country(CountryCode='%s', CountryName='%s')>" % (self.CountryCode, self.CountryName)
