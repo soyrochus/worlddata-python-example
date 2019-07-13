@@ -2,23 +2,22 @@
 
 A Python package demonstrating the usage with large data sets".
 
-## Installation
+## Installation and activation after obtaining a clone from Github
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Install `pipenv`, the modern Python packaging and environment managing tool. For a great guide see: [Pipenv: A Guide to the New Python Packaging Tool](https://realpython.com/pipenv-guide/). Pipenv solves most of the issues with Python's packaging ecosystem.
+
+Use the more basic package manager [pip](https://pip.pypa.io/en/stable/) to install pipenv.
 
 ```bash
-pip install foobar
+pip install pipenv
 ```
 
-## Usage
+Then go into the folder `worlddata-python-example` and execute: 
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+```bash
+pipenv install'-e .' 
 ```
+in order to install all dependecies and get a locally registered 'devlopment' copy of the 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
