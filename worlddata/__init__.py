@@ -1,5 +1,5 @@
 
 from .gdp import Gdp, GdpData
-from .population import PopulationData, Population
+from .population import PopulationData
 from .fao import FaoData, Fao
 

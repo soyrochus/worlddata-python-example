@@ -17,7 +17,12 @@ Then go into the folder `worlddata-python-example` and execute:
 ```bash
 pipenv install -e .
 ```
-in order to install all dependecies and get a locally registered 'development' copy of the project.
+
+in order to install all dependencies and get a locally registered 'development' copy of the project.
+
+## Basic API
+
+TOD
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
