@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "139fca5704bcfcadf6e471dfc8fd24f199191709db0cbbef47f390190a264ac0"
+            "sha256": "6af3a07c1823ffe5d59f90dbc2efcd2ae1af5a563341ebddd07022e977408c9a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -108,6 +108,10 @@
                 "sha256:f4ebe71925af7b40a864553f761ed559b43544f8f71746c2d756c7fe788ade7c"
             ],
             "version": "==0.1.7"
+        },
+        "worlddata-python-example": {
+            "editable": true,
+            "path": "."
         },
         "zipp": {
             "hashes": [

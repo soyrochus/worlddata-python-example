@@ -11,7 +11,7 @@ def test_population_instantiation():
 def test_population_get_all():
     
     pops = PopulationData(POPS_DB_PATH)
-    data = pops.get_all_countries()
+    data = pops.get_all()
     
     assert 264 == len(data.keys()) # total number of countries
     
@@ -24,7 +24,7 @@ def test_population_get_all():
     
 def test_population_filter_data():
     pops = PopulationData(POPS_DB_PATH)
-    data = pops.get_countries(('NLD', 'ESP'), range(1990, 1992))
+    data = pops.get_range(('NLD', 'ESP'), range(1990, 1992))
     assert '14951510' == data['NLD']['1990']	
     assert '15069798' == data['NLD']['1991']	
     assert '38867322' == data['ESP']['1990']	
@@ -32,7 +32,10 @@ def test_population_filter_data():
 
 def test_population_filter_mixmax():
     pops = PopulationData(POPS_DB_PATH)
-    data = pops.get_countries_max(('NLD', 'ESP'), range(1990, 1992))
+    data = pops.get_range_max(('NLD', 'ESP'), range(1990, 1992))
     assert ('ESP', '1991', '38966376') == data	
+   
+    data = pops.get_range_min(('NLD', 'ESP'), range(1990, 1992))
+    assert ('NLD', '1990', '14951510') == data	
    
 
