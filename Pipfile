@@ -9,6 +9,7 @@ verify_ssl = true
 pytest = "*"
 sqlalchemy = "*"
 worlddata-python-example = {editable = true,path = "."}
+mypy = "*"
 
 [requires]
 python_version = "3.7"
