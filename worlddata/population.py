@@ -39,9 +39,9 @@ class PopulationData:
         return min(selected, key=lambda item: int(item[2]))
 
     def get_range_mean(self, sel_countries, sel_years=range(1960, 2019)):
-        selected = self._get_countries_tuples(sel_countries, sel_years)
-        return mean(selected, key=lambda item: int(item[2]))
-    
+        selected = [int(e[2]) for e in self._get_countries_tuples(sel_countries, sel_years)]
+        return mean(selected)
+        
 def _select_years(years, sel_years):
         selected = {}
         for year in sel_years:

@@ -31,12 +31,33 @@ class GdpData:
         session.close()
         return countries
 
-    def get_gdp(self):
+    def get_all(self):
         session = self.Session()
         query = session.query(Gdp).order_by(Gdp.CountryCode.asc())
-        gdp = query.all()
+        data = query.all()
         session.close()
-        return gdp
+        selected = {}
+        for e in data:
+            country = selected.get(e.CountryCode, {})
+            year = country.get(e.Year, {})
+            year["gdp"] = e.gdp
+            year["growth"] = e.growth
+            country[e.Year] = year
+            selected[e.CountryCode] = country
+        return selected
+
+    def get_range(self, sel_countries, sel_years=range(1960, 2019)):
+        data = self.get_all()
+        selected = {}
+        for sel_country in sel_countries:
+            selected[sel_country]= _select_years(data[sel_country], sel_years)
+        return selected    
+
+def _select_years(years, sel_years):
+        selected = {}
+        for year in sel_years:
+            selected[str(year)] = years[str(year)]
+        return selected
 
 class Country(Base):
     

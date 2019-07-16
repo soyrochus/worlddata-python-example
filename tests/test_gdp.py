@@ -26,4 +26,15 @@ def test_gdp_get_all():
     for e in data.values():
         total += len(e.values()) 
     assert 15576 == total
+
+
+def test_gdp_filter_data():
+    gdp = GdpData(DB_PATH)
+    data = gdp.get_range(('NLD', 'ESP'), range(1990, 1992))
+             
+    {'gdp': 318330511920.61, 'growth': 4.18322281189747} == data['NLD']['1990']	
+    {'gdp': 327500328264.969, 'growth': 2.43913450352082} == data['NLD']['1991']	
+
+    {'gdp': 535101248775.71, 'growth': 3.78139346477435} == data['ESP']['1990']	
+    {'gdp': 575598537069.656, 'growth': 2.54600056787201} == data['ESP']['1991']	
     

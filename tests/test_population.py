@@ -30,7 +30,7 @@ def test_population_filter_data():
     assert '38867322' == data['ESP']['1990']	
     assert '38966376' == data['ESP']['1991']	
 
-def test_population_filter_mixmax():
+def test_population_filter_mixmaxmean():
     pops = PopulationData(POPS_DB_PATH)
     data = pops.get_range_max(('NLD', 'ESP'), range(1990, 1992))
     assert ('ESP', '1991', '38966376') == data	
@@ -38,4 +38,7 @@ def test_population_filter_mixmax():
     data = pops.get_range_min(('NLD', 'ESP'), range(1990, 1992))
     assert ('NLD', '1990', '14951510') == data	
    
+    data = pops.get_range_mean(('NLD', 'ESP'), range(1990, 1992))
+    assert 26963751.5 == data
+
 
