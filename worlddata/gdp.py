@@ -32,6 +32,15 @@ class GdpData:
         session.close()
         return countries
 
+    def get_countries_mapping(self):
+        
+        session = self.Session()
+        query = session.query(Country).order_by(Country.CountryCode.asc())
+        countries = query.all()
+        session.close()
+        return {e.CountryCode: e for e in countries}, {e.CountryCode2 : e for e in countries} 
+
+
     def get_all(self):
         session = self.Session()
         query = session.query(Gdp).order_by(Gdp.CountryCode.asc())

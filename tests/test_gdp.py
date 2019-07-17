@@ -1,4 +1,4 @@
-from worlddata import GdpData, Gdp
+from worlddata import GdpData
 
 DB_PATH = 'data/world-gdp.db'
 
@@ -15,6 +15,20 @@ def test_gdp_get_countries():
     assert 'AW' == countries[0].CountryCode2
     assert '533' == countries[0].UNCode
     assert 'ZWE' == countries[-1].CountryCode # Last item in list: Zimbabwe
+
+
+def test_gdp_get_countries_mapping():
+    gdp = GdpData(DB_PATH)
+    countries, countries2 = gdp.get_countries_mapping()
+    assert 247 == len(countries.keys()) # total number of countries
+    assert 'ABW' == countries["ABW"].CountryCode   # First item in list: Aruba
+    assert 'Aruba' == countries["ABW"].CountryName
+    assert 'AW' == countries["ABW"].CountryCode2
+    assert '533' == countries["ABW"].UNCode
+    assert 'ZWE' == countries["ZWE"].CountryCode # Last item in list: Zimbabwe
+    #mapping 2 char country code -> 3 char country code
+    assert 'AW' == countries2["AW"].CountryCode2   # First item in list: Aruba
+
 
 def test_gdp_get_all():
     gdp = GdpData(DB_PATH)
