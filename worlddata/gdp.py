@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Numeric
+from statistics import mean
 import csv
 
 Base = declarative_base()
@@ -52,6 +53,27 @@ class GdpData:
         for sel_country in sel_countries:
             selected[sel_country]= _select_years(data[sel_country], sel_years)
         return selected    
+
+    def get_range_max(self, sel_countries, sel_years=range(1960, 2019), prop="gdp"):
+        selected = self._get_countries_tuples(sel_countries, sel_years)
+        return max(selected, key=lambda item: int(item[2][prop]))
+
+    def get_range_min(self, sel_countries, sel_years=range(1960, 2019), prop="gdp"):
+        selected = self._get_countries_tuples(sel_countries, sel_years)
+        return min(selected, key=lambda item: int(item[2][prop]))
+
+    def get_range_mean(self, sel_countries, sel_years=range(1960, 2019), prop="gdp"):
+        selected = [int(e[2][prop]) for e in self._get_countries_tuples(sel_countries, sel_years)]
+        return mean(selected)
+
+
+    def _get_countries_tuples(self, sel_countries, sel_years):
+        selected = self.get_range(sel_countries, sel_years)
+        res = []
+        for country in selected.keys():
+            for year, value in selected[country].items():
+                res.append((country, year, value))
+        return res
 
 def _select_years(years, sel_years):
         selected = {}
